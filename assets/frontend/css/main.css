@@ -407,7 +407,8 @@ h2.collapsable .fa {
 }
 
 .logo {
-    max-height: 100px;
+    width: 70%;
+    max-width: 278px;
 }
 
 .mobile_nav_button, .mobile_nav {

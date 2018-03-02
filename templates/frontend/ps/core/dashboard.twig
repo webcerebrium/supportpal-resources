@@ -1,0 +1,123 @@
+{% extends parent_template %}
+
+{% block breadcrumb %}
+    {{ parent() }}
+    {{ Lang.get('general.home') }}
+{% endblock %}
+
+{% block content %}
+
+    {% if not isModuleEnabled('Ticket') and not isModuleEnabled('Selfservice') %}
+
+        {{ Lang.get('core.no_modules') }}
+
+    {% else %}
+        <div class="hero-search">
+            <form name="search" action="{{ route('core.frontend.search') }}" method="post">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                <input type="text" name="query" ID="subject" placeholder="Hva trenger du hjelp til?" />
+                <input class="btn" type="submit" value="SØK">
+            </form>
+            <div class="suggested-articles hide" style="background: #a2edff40; border-radius: 5px; margin-bottom: 25px; margin-top: 25px; padding: 25px;">
+                <h3 class="margin0">{{ Lang.get('selfservice.related_articles') }}</h3>
+                <div class="articles-list"></div>
+            </div>
+        </div>
+        <hr>
+        {% if isModuleEnabled('Ticket') %}
+            <div class="desk_section">
+                <a href="{{ route('ticket.frontend.ticket.createStep1') }}">
+                    <img src="{{ asset_rev('resources/assets/frontend/icons/send.png') }}" class="icon left"
+                         width="48" alt="{{ Lang.get('core.submit_ticket') }}" />
+                </a>
+                <h4><a href="{{ route('ticket.frontend.ticket.createStep1') }}">{{ Lang.get('core.submit_ticket') }}</a></h4>
+                <p>{{ Lang.get('core.submit_ticket_desc') }}</p>
+            </div>
+
+            {# {% if not auth_check() and Config.get('channel.web.settings.unauthenticated_users') %}
+            <div class="desk_section">
+                <a href="{{ route('ticket.frontend.track') }}">
+                    <img src="{{ asset_rev('resources/assets/frontend/icons/binoculars.png') }}" class="icon left"
+                         width="48" alt="{{ Lang.get('core.track_ticket') }}" />
+                </a>
+                <h4><a href="{{ route('ticket.frontend.track') }}">{{ Lang.get('core.track_ticket') }}</a></h4>
+                <p>{{ Lang.get('core.track_ticket_desc') }}</p>
+            </div>
+            {% elseif auth_check() %}
+            <div class="desk_section">
+                <a href="{{ route('ticket.frontend.ticket.index') }}">
+                    <img src="{{ asset_rev('resources/assets/frontend/icons/binoculars.png') }}" class="icon left"
+                         width="48" alt="{{ Lang.get('core.my_tickets') }}" />
+                </a>
+                <h4><a href="{{ route('ticket.frontend.ticket.index') }}">{{ Lang.get('core.my_tickets') }}</a></h4>
+                <p>{{ Lang.get('core.my_tickets_desc') }}</p>
+            </div>
+            {% endif %} #}
+        {% endif %}
+
+        {% if isModuleEnabled('Selfservice') %}
+            {% for type in selfserviceTypes %}
+            <div class="desk_section">
+                <a href="{{ route('selfservice.index', { 'type': type.slug }) }}">
+                    <img src="data:image/jpeg;base64, {{ type.icon }}" class="icon left"
+                         width="48" alt="{{ type.name }}" />
+                </a>
+                <h4><a href="{{ route('selfservice.index', { 'type': type.slug }) }}">{{ type.name }}</a></h4>
+                <p>{{ type.description }}</p>
+            </div>
+            {% endfor %}
+        {% endif %}
+
+        {% if isModuleEnabled('Selfservice') %}
+
+            {% if types.contains('show_on_dashboard', 1) %}
+
+                <ul class="desk-tabs">
+                    {% for type in types %}
+                        {% if type.show_on_dashboard %}
+                            <li id="{{ type.slug }}" {% if firstTab is not defined %} class="active" {% set firstTab = true %} {% endif %}>
+                                {% if type.view == 0 %}
+                                    {{ Lang.get('selfservice.type_popular_items', {'type': type.name}) }}
+                                {% else %}
+                                    {{ Lang.get('selfservice.type_latest_items', {'type': type.name}) }}
+                                {% endif %}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+
+                <div class="desk-tabs-content">
+                    {% for type in types %}
+                        {% if type.show_on_dashboard %}
+                            <div id="tab{{ type.slug }}" class="desk-tab {% if firstContent is defined %} hide {% else %} {% set firstContent = true %} {% endif %}">
+                                {% if type.view == 0 %}
+                                    <h2 class="tab-title">{{ Lang.get('selfservice.type_popular_items', {'type': type.name}) }}</h2>
+                                {% else %}
+                                    <h2 class="tab-title">{{ Lang.get('selfservice.type_latest_items', {'type': type.name}) }}</h2>
+                                {% endif %}
+                                {% include 'frontend.' ~ template ~ '.selfservice.article_list' with {'articles': type.articles, 'noRssFeed': true} %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+            {% endif %}
+
+        {% endif %}
+
+    {% endif %}
+
+{% endblock %}
+{% block scripts_footer %}
+    <script type="text/javascript">
+        // If we should attempt to fetch related articles
+        var relatedArticlesEnabled;
+        {% if isModuleEnabled('Selfservice') and Config.get('channel.web.settings.show_related_articles') %}
+            relatedArticlesEnabled = true;
+        {% else %}
+            relatedArticlesEnabled = false;
+        {% endif %}
+    </script>
+
+    <script type="text/javascript" src="{{ asset_rev('resources/assets/frontend/js/psquery.js') }}"></script>
+{% endblock %}

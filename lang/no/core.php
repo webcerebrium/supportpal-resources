@@ -15,7 +15,7 @@ return array(
     "welcome_back"              => "Velkommen tilbake",
     "search_placeholder"        => "Søk i vårt infosenter",
     "submit_ticket"             => "Kontakt oss",
-    "submit_ticket_desc"        => "Bruk dette skjemaet for å opprette en henvendelse til våre kundebehandlere.",
+    "submit_ticket_desc"        => "Finn vår kontaktinformasjon her.",
     "track_ticket"              => "Se status på henvendelse",
     "track_ticket_desc"         => "Ikke registrert? Bruk din e-post adresse og henvendelse nummer for å se status på din henvendelse.",
     "my_tickets"                => "Mine Henvendelser",

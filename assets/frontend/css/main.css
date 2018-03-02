@@ -1650,3 +1650,59 @@ iframe[src="about:blank"] {
 #recaptcha_table {
     background: #fff;
 }
+
+/* PS-STUFF */
+
+body {
+    background: #F6F6F6;
+}
+
+.logo {
+    width: 70%;
+    max-width: 278px;
+}
+a.back-ps {
+    display: block;
+    width: 250px;
+}
+
+
+button, input[type="button"], input[type="submit"], label.button, .button {
+    padding: 6px 20px;
+    -webkit-appearance:none; 
+    border-radius: 5px;
+    background-image: none;
+    box-shadow: none;
+}
+
+.hero-search input {
+    width: 66%;
+    height: 50px;
+    padding-left: 15px;
+    font-size: 16px;
+}
+.hero-search .btn {
+    width: 200px;
+    margin-left: 20px;
+    padding: 6px 20px;
+}
+input[type="submit"] { 
+    background-color: #3480B6;
+}
+@media (max-width: 880px) {
+    .hero-search input {
+        width: 100%;
+        text-align: center;
+        padding: 6px 20px;
+    }
+    .hero-search .btn {
+        margin: 0 auto;
+        display: block;
+        margin-top: 10px;
+    }
+}
+@media (max-width: 480px) {
+    a.back-ps {
+        padding-left: 20px;
+    }
+}

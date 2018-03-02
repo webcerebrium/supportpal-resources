@@ -123,7 +123,7 @@ return array(
     "type_to_filter"            => "Type to filter",
     "enter_exact_ip"            => "Enter exact IP address",
     "form"                      => "Form",
-    "support_portal"            => "Support Portal",
+    "support_portal"            => "Infosenter",
     "previous_page"             => "Previous Page",
     "reset"                     => "Tilbakestill",
     "interval"                  => "Interval",

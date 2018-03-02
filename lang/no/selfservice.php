@@ -9,7 +9,7 @@ return array(
 
     "selfservice"               => "Selvhjelp",
     "article"                   => "Artikkel|Artikler",
-    "category"                  => "Kategori|Katergorier",
+    "category"                  => "Kategori|Kategorier",
     "comment"                   => "Kommentar|Kommentarer",
     "tag"                       => "Tag|Tags",
     "type"                      => "Type|Typer",

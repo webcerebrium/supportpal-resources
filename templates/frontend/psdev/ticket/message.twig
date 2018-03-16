@@ -1,0 +1,48 @@
+<div class="message clear" data-id="{{ message.id }}">
+
+	<div class="header">
+		<img src="data:image/png;base64,{{ message.user.avatar }}" class="avatar left" />
+		<span class="name {% if (message.by == 0) %} staff {% else %} user {% endif %}">
+            {{ message.user.formatted_name }}
+        </span>
+        <br />
+		<span class="date">
+			{% if message.by == 0 %}
+                {{ Lang.get('general.staff') }}
+            {% else %}
+                {{ Lang.choice('user.user', 1) }}
+            {% endif %} &nbsp;&middot;&nbsp;
+
+            {{ timeago(message.created_at) }}
+        </span>
+	</div>
+
+	<div class="text">
+		{{ message.purified_text|raw }}
+
+        {% if not message.attachments.isEmpty() %}
+			<div class="attachments">
+				<h4 class="attachments-title">{{ Lang.choice('general.attachment', 2) }}</h4>
+				<ul class="attachments">
+					{% for attachment in message.attachments %}
+						<li {% if (message.by != 0) %}class="deletable"{% endif %}>
+							<a href='{{ attachment.direct_frontend_url }}'>
+								<i class="fa fa-paperclip"></i>
+								&nbsp;
+								{{ attachment.original_name }}
+								&nbsp;
+								<span class="light">({{ attachment.upload.size }})</span>
+							</a>{% if (message.by != 0) %}<i class="fa fa-times deleteAttachment"
+								   data-url="{{ route('ticket.frontend.attachment.destroy') }}"
+								   data-token="{{ Input.get('token', '') }}"
+								   data-attachment-id="{{ attachment.id }}"
+								   data-hash="{{ attachment.upload_hash }}"></i>{% endif %}
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+    	{% endif %}
+
+    </div>
+
+</div>

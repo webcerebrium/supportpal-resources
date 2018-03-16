@@ -1674,6 +1674,15 @@ button, input[type="button"], input[type="submit"], label.button, .button {
     background-image: none;
     box-shadow: none;
 }
+a.cta {
+    background-color: #3480B6;
+    border-color: #05304D;
+    font-size: 16px;
+    line-height: 2;
+}
+a.cta:hover {
+    background: #2C6384;
+}
 
 .hero-search input {
     width: 66%;
@@ -1688,6 +1697,17 @@ button, input[type="button"], input[type="submit"], label.button, .button {
 }
 input[type="submit"] { 
     background-color: #3480B6;
+}
+.cat-button {
+    display: inline-block;
+    border: 1px solid #e6e6e6;
+    padding: 4px 10px;
+    margin-left: 4px;
+    border-radius: 5px;
+    font-weight: 400;
+}
+a.cattitle:hover .cat-button {
+    border: 1px solid #c5c5c5;
 }
 @media (max-width: 880px) {
     .hero-search input {

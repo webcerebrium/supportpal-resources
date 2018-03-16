@@ -35,7 +35,7 @@ return array(
     "internal"                  => "Internal",
     "internal_ticket"           => "Internal Ticket",
     "internal_ticket_desc"      => "Open a ticket for internal use only. This ticket will be associated with you, rather than a user.",
-    "ticket_opened"             => "Din henvendelse er sendt inn.",
+    "ticket_opened"             => "Takk! Din henvendelse er sendt inn. Du vil få varsling på epost når vi har behandlet denne.",
     "enter_user_details"        => "Fyll inn din informasjon for å sende oss en henvendelse.",
     "already_have_account"      => "You already have an account, please login and then open the ticket. Please use the forgot password feature if you cannot remember your login.",
 
@@ -145,9 +145,9 @@ return array(
     "response_rate"             => "Response Rate",
     "sent_forms"                => "Sent Feedback Forms",
     "rating"                    => "Rating",
-    "good_ratings"              => "Good Ratings",
-    "bad_ratings"               => "Bad Ratings",
-    "customer_satisfaction"     => "Customer Satisfaction",
+    "good_ratings"              => "Gode tilbakemeldinger",
+    "bad_ratings"               => "Dårlige tilbakemeldinger",
+    "customer_satisfaction"     => "Kundetilfredshet",
     "feedback_desc"             => "Takk for at du kontaktet oss. Vi håper vi løste ditt problem. Fint om du kan vurdere din opplevelse nedenfor.",
     "good_satisfied"            => "Bra, jeg er fornøyd",
     "bad_not_satisfied"         => "Dårlig, jeg er misfornøyd",
@@ -194,16 +194,16 @@ return array(
     "cc"                        => "Kopi:",
     "cc_desc"                   => "Du kan legge e-post adresser som kopi til denne henvendelsen.",
 
-    "allowed_files"             => "Allowed Attachment File Types",
+    "allowed_files"             => "Tillatte filtyper",
 
     // Drafts
-    "also_viewing"              => "<strong>:name</strong> also viewing ticket.",
-    "draft_saved"               => "Draft saved at :time",
-    "save_draft"                => "Save Draft",
-    "discard_draft"             => "Discard Draft",
+    "also_viewing"              => "<strong>:name</strong> ser også på denne henvendelsen.",
+    "draft_saved"               => "Kladd lagret :time",
+    "save_draft"                => "Lagre kladd",
+    "discard_draft"             => "Slett kladd",
 
     // Locked
-    "error_ticket_locked"       => "This ticket has been locked and cannot be updated again, please open a new ticket if you need further support.",
+    "error_ticket_locked"       => "Denne henvendelsen er markert som avsluttet og kan ikke oppdateres. Vennligst kontakt oss på nytt dersom du trenger videre hjelp.",
 
     // Ticket Followups
     "follow_up"                 => "Follow Up",
@@ -409,7 +409,7 @@ return array(
     "email_accounts"            => "Email Accounts",
     "add_another_email"         => "Add Another Email Address",
     "follow_up_date"            => "Follow Up Date",
-    "post_reply"                => "Post Reply",
+    "post_reply"                => "Send svar",
     "post_note"                 => "Post Note",
     "ticket_details"            => "Henvendelse Detaljer",
     "organisation_tickets"      => "Organisation Tickets",
